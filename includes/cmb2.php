@@ -32,8 +32,11 @@ function pekerjaan_metabox_metabox()
     $cmb_group->add_field(array(
         'name'             => 'Tanggal Order',
         'id'               => $prefix . 'tanggal_order',
-        'type'             => 'text_date',
-        'attributes' => array('autocomplete' => 'off'),
+        'type'             => 'text',
+        'attributes' => array(
+            'autocomplete' => 'off',
+            'type' => 'date'
+        ),
     ));
 
     // $cmb_group->add_field(array(
@@ -265,12 +268,16 @@ function add_customer_data_metabox()
         'options' => $pelanggan_pekerjaan
     ));
 
+    // =======================================================================
+
     $cmb->add_field(array(
         'name'    => __('Judul Akta', 'cmb2'),
         'desc'    => __('', 'cmb2'),
         'id'      => $prefix . 'judul_akta',
         'type'    => 'text',
-        'options' => ''
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Perjanjian_Kredit Pendirian_PT Pendirian_CV Pendirian_yayasan Pendirian_PT_perorangan Perubahan_PT Perub_CV Perub_Yayasan Perubahan_PT_perorangan',
+        ),
     ));
 
     $cmb->add_field(array(
@@ -278,15 +285,21 @@ function add_customer_data_metabox()
         'desc'    => __('', 'cmb2'),
         'id'      => $prefix . 'nomor_akta',
         'type'    => 'text',
-        'options' => ''
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Perjanjian_Kredit Skmht Apht Fidusia Jual_beli Hibah Pendirian_PT Pendirian_CV Pendirian_yayasan Pendirian_PT_perorangan Perubahan_PT Perub_CV Perub_Yayasan Perubahan_PT_perorangan',
+        ),
     ));
 
     $cmb->add_field(array(
         'name'    => __('Tanggal Akta', 'cmb2'),
         'desc'    => __('', 'cmb2'),
         'id'      => $prefix . 'tanggal_akta',
-        'type'    => 'text_date',
-        'options' => ''
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Perjanjian_Kredit Skmht Apht Fidusia Jual_beli Hibah Pendirian_PT Pendirian_CV Pendirian_yayasan Pendirian_PT_perorangan Perubahan_PT Perub_CV Perub_Yayasan Perubahan_PT_perorangan',
+            'type' => 'date',
+            'autocomplete' => 'off',
+        ),
     ));
 
     $cmb->add_field(array(
@@ -294,7 +307,9 @@ function add_customer_data_metabox()
         'desc'    => __('', 'cmb2'),
         'id'      => $prefix . 'yang_mengerjakan',
         'type'    => 'text',
-        'options' => ''
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Perjanjian_Kredit',
+        ),
     ));
 
     $cmb->add_field(array(
@@ -302,7 +317,9 @@ function add_customer_data_metabox()
         'desc'    => __('', 'cmb2'),
         'id'      => $prefix . 'jumlah_pinjaman',
         'type'    => 'text',
-        'options' => ''
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Perjanjian_Kredit',
+        ),
     ));
 
     $cmb->add_field(array(
@@ -310,8 +327,613 @@ function add_customer_data_metabox()
         'desc'    => __('', 'cmb2'),
         'id'      => $prefix . 'lain_lain',
         'type'    => 'text',
-        'options' => ''
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Perjanjian_Kredit Pendirian_yayasan Perub_Yayasan',
+        )
     ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nomor Agunan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nomor_agunan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Apht',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NIB', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nib',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Apht',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NOP', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nop',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Apht',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Pemilik Agunan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_pemilik_agunan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Apht',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Kode Sertifikat', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'kode_sertifikat',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Apht',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nomor Seri', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nomor_seri',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Apht',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Jumlah Pengikatan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'jumlah_pengikatan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Apht',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Jenis Agunan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'jenis_agunan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Fidusia',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Keterangan Objek', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'keterangan_objek',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Fidusia',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Bukti Kepemilikan Objek', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'bukti_kepemilikan_objek',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Fidusia',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nilai Objek', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nilai_objek',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Fidusia',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Pemilik Agunan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'pemilik_agunan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Fidusia',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nilai Penjaminan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nilai_penjaminan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Fidusia',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NPWP', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'npwp',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Fidusia',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Tanggal Habis SKMHT', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'tanggal_habis_skmht',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Skmht Fidusia',
+            'type' => 'date',
+            'autocomplete' => 'off',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Penjual', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_penjual',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Pembeli', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_pembeli',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Sertifikat', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'sertifikat_1',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Lokasi Tanah', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'lokasi_tanah',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nilai Jual Beli', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nilai_jual_beli',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nilai SSB', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nilai_ssb',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nilai SSP', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nilai_ssp',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Keterangan PPJB', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'keterangan_ppjb',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Keterangan Kuasa Menjual', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'keterangan_kuasa_menjual',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Harga Real', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'harga_real_1',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Harga Kesepakatan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'harga_kesepakatan_1',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Jual_beli Hibah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Tanggal Masuk Berkas', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'tanggal_masuk_berkas',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris Pecah',
+            'type' => 'date',
+            'autocomplete' => 'off',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Pewaris', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'pewaris',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Ahli Waris', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'ahli_waris',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Penerima Waris', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'penerima_waris',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Lokasi Waris', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'lokasi_waris',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nilai Pajak', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nilai_pajak',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Berkas Kembali', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'berkas_kembali',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Masuk BPN', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'masuk_bpn',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Tanggal Akad', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'tanggal_akad',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Turun_waris',
+            'type' => 'date',
+            'autocomplete' => 'off',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Pemilik Sertifikat', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_pemilik_sertifikat',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pecah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Jumlah Pecah', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'jumlah_pecah',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pecah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Keterangan Agunan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'keterangan_agunan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pecah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Keterangan Berkas', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'keterangan_berkas',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pecah',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Tanggal Masuk BPN', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'tanggal_masuk_bpn',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pecah',
+            'type' => 'date',
+            'autocomplete' => 'off',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Direktur', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_direktur',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Pendirian_PT_perorangan Perubahan_PT Perubahan_PT_perorangan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Komisaris', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_komisaris',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Perubahan_PT',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Persero Aktif', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_persero_aktif',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_CV Perub_CV',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Persero Pasif', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_persero_pasif',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_CV Perub_CV',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Pembina', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_pembina',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_yayasan Perub_Yayasan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Ketua', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_ketua',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_yayasan Perub_Yayasan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Wakil', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_wakil',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_yayasan Perub_Yayasan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Bendahara', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_bendahara',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_yayasan Perub_Yayasan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NPWP Direktur', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'npwp_direktur',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Pendirian_PT_perorangan Perubahan_PT',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NPWP Komisaris', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'npwp_komisaris',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Perubahan_PT',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NPWP Persero Aktif', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'npwp_persero_aktif',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_CV Perub_CV',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NPWP Persero Pasif', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'npwp_persero_pasif',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_CV Perub_CV',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('NPWP Yayasan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'npwp_yayasan',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_CV Pendirian_yayasan Perub_Yayasan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Persero Pasif', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_persero_pasif',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_CV',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Nama Pemilik Manfaat', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'nama_pemilik_manfaat',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Perubahan_PT',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Kedudukan PT', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'kedudukan_pt',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Pendirian_CV Pendirian_PT_perorangan Perubahan_PT Perub_CV Perubahan_PT_perorangan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Biaya', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'biaya',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Pendirian_CV Pendirian_yayasan Pendirian_PT_perorangan Perubahan_PT Perub_CV Perub_Yayasan Perubahan_PT_perorangan',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Keterangan', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'keterangan',
+        'type'    => 'textarea',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Pendirian_CV Pendirian_yayasan Pendirian_PT_perorangan Perubahan_PT Perub_CV Perub_Yayasan Perubahan_PT_perorangan',
+            'rows' => '5',
+        )
+    ));
+
+    $cmb->add_field(array(
+        'name'    => __('Tanggal Upload', 'cmb2'),
+        'desc'    => __('', 'cmb2'),
+        'id'      => $prefix . 'tanggal_upload',
+        'type'    => 'text',
+        'attributes' => array(
+            'class' => 'opsi-pekerjaan form-control Pendirian_PT Pendirian_CV Pendirian_yayasan Pendirian_PT_perorangan Perubahan_PT Perub_CV Perub_Yayasan Perubahan_PT_perorangan',
+            'type' => 'date',
+            'autocomplete' => 'off',
+        )
+    ));
+
+    // =======================================================================
 
     $cmb->add_field(array(
         'name'    => __('Pekerjaan 2', 'cmb2'),
@@ -509,6 +1131,10 @@ function dokumen_metabox_metabox()
         'name' => esc_html__('Tanggal Akta', 'text-domain'),
         'id'   => 'tanggal_akta',
         'type' => 'text_date',
+        'attributes' => array(
+            'type' => 'date',
+            'autocomplete' => 'off',
+        )
     ));
 
     // Jenis Akta
@@ -565,7 +1191,7 @@ function dokumen_metabox_metabox()
 //             'Skmht' => __('Skmht', 'cmb2'),
 //             'Apht'  => __('Apht', 'cmb2'),
 //             'Fidusia' => __('Fidusia', 'cmb2'),
-//             'Jual beli' => __('Jual beli', 'cmb2'),
+//             'Jual_beli' => __('Jual_beli', 'cmb2'),
 //             'Hibah' => __('Hibah', 'cmb2'),
 //             'Turun waris' => __('Turun waris', 'cmb2'),
 //             'Aphb' => __('Aphb', 'cmb2'),
@@ -637,6 +1263,15 @@ add_action('cmb2_after_form', function () {
             // Add change event handler for kategori field
             $('#_customer_data_kategori').on('change', function() {
                 toggleBankField();
+            });
+
+            $('.opsi-pekerjaan ').closest('.cmb-row').hide();
+            // Add change event handler for pekerjaan field
+            $('#_customer_data_pekerjan').on('change', function() {
+                var value = $(this).val().replace(/\s+/g, '_');
+                // console.log($value);
+                $('.opsi-pekerjaan ').closest('.cmb-row').hide();
+                $('.' + value).closest('.cmb-row').show();
             });
         });
     </script>

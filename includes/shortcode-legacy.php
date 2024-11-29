@@ -1314,6 +1314,114 @@ function data_konsumen()
                                                                     <div class="fw-bold">Sertifikat</div>
                                                                     <?php echo !empty(get_post_meta($post->ID, '_customer_data_sertifikat', true)) ? get_post_meta($post->ID, '_customer_data_sertifikat', true) : '-'; ?>
                                                                 </li>
+                                                                <?php
+                                                                // Daftar field yang ingin ditampilkan
+                                                                $data_fields = [
+                                                                    'judul_akta',
+                                                                    'nomor_akta',
+                                                                    'tanggal_akta',
+                                                                    'yang_mengerjakan',
+                                                                    'jumlah_pinjaman',
+                                                                    'lain_lain',
+                                                                    'nomor_agunan',
+                                                                    'nib',
+                                                                    'nop',
+                                                                    'nama_pemilik_agunan',
+                                                                    'kode_sertifikat',
+                                                                    'nomor_seri',
+                                                                    'jumlah_pengikatan',
+                                                                    'jenis_agunan',
+                                                                    'keterangan_objek',
+                                                                    'bukti_kepemilikan_objek',
+                                                                    'nilai_objek',
+                                                                    'pemilik_agunan',
+                                                                    'nilai_penjaminan',
+                                                                    'npwp',
+                                                                    'tanggal_habis_skmht',
+                                                                    'nama_penjual',
+                                                                    'nama_pembeli',
+                                                                    'nama_pembeli',
+                                                                    'sertifikat_1',
+                                                                    'lokasi_tanah',
+                                                                    'nilai_jual_beli',
+                                                                    'nilai_ssb',
+                                                                    'nilai_ssp',
+                                                                    'keterangan_ppjb',
+                                                                    'keterangan_kuasa_menjual',
+                                                                    'harga_real_1',
+                                                                    'harga_kesepakatan_1',
+                                                                    'tanggal_masuk_berkas',
+                                                                    'pewaris',
+                                                                    'ahli_waris',
+                                                                    'penerima_waris',
+                                                                    'lokasi_waris',
+                                                                    'nilai_pajak',
+                                                                    'berkas_kembali',
+                                                                    'masuk_bpn',
+                                                                    'tanggal_akad',
+                                                                    'nama_pemilik_sertifikat',
+                                                                    'jumlah_pecah',
+                                                                    'keterangan_agunan',
+                                                                    'keterangan_berkas',
+                                                                    'tanggal_masuk_bpn',
+                                                                    'nama_direktur',
+                                                                    'nama_komisaris',
+                                                                    'nama_persero_aktif',
+                                                                    'nama_persero_pasif',
+                                                                    'nama_pembina',
+                                                                    'nama_ketua',
+                                                                    'nama_wakil',
+                                                                    'nama_bendahara',
+                                                                    'npwp_direktur',
+                                                                    'npwp_komisaris',
+                                                                    'npwp_persero_aktif',
+                                                                    'npwp_persero_pasif',
+                                                                    'npwp_yayasan',
+                                                                    'nama_pemilik_manfaat',
+                                                                    'kedudukan_pt',
+                                                                    'biaya',
+                                                                    'keterangan',
+                                                                    'tanggal_upload',
+                                                                ];
+
+                                                                // Loop untuk setiap field
+                                                                foreach ($data_fields as $field) {
+                                                                    // Ambil data dari meta
+                                                                    $value = get_post_meta($post->ID, '_customer_data_' . $field, true);
+
+                                                                    // Tampilkan hanya jika ada data
+                                                                    if (!empty($value)) {
+                                                                        // Format khusus untuk tanggal
+                                                                        if (in_array($field, ['tanggal_akta', 'tanggal_habis_skmht', 'tanggal_masuk_berkas', 'tanggal_akad', 'tanggal_upload'])) {
+                                                                            // Ubah format tanggal jika datanya valid
+                                                                            $timestamp = strtotime($value); // Konversi ke timestamp
+                                                                            if ($timestamp) {
+                                                                                $value = date('d-m-Y', $timestamp); // Format menjadi d-m-Y
+                                                                            }
+                                                                        }
+
+                                                                        // Format khusus untuk 'biaya' dan 'jumlah_pinjaman' ke format Rupiah
+                                                                        if ($field === 'biaya' || $field === 'jumlah_pinjaman') {
+                                                                            // Hapus karakter non-angka
+                                                                            $value = preg_replace('/[^0-9]/', '', $value);
+
+                                                                            // Format angka menjadi format Rupiah
+                                                                            $value = number_format($value, 0, ',', '.');
+
+                                                                            // Tambahkan prefix "Rp."
+                                                                            $value = 'Rp. ' . $value;
+                                                                        }
+                                                                ?>
+                                                                        <li class="list-group-item">
+                                                                            <div class="fw-bold"><?php echo ucwords(str_replace('_', ' ', $field)); ?></div>
+                                                                            <div><?php echo esc_html($value); ?></div>
+                                                                        </li>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
+
+
                                                                 <?php if (current_user_can('administrator') || $jabatan_staff == 'keuangan'): ?>
                                                                     <li class="list-group-item">
                                                                         <div class="fw-bold">Harga Real</div>
