@@ -1385,42 +1385,43 @@ function data_konsumen()
                                                                 ];
 
                                                                 // Loop untuk setiap field
-                                                                foreach ($data_fields as $field) {
-                                                                    // Ambil data dari meta
-                                                                    $value = get_post_meta($post->ID, '_customer_data_' . $field, true);
+                                                                $loops = ['', '2', '3', '4'];
+                                                                foreach ($loops as $loop) {
+                                                                    foreach ($data_fields as $field) {
+                                                                        // Ambil data dari meta
+                                                                        $value = get_post_meta($post->ID, '_customer_data_' . $field . $loop, true);
 
-                                                                    // Tampilkan hanya jika ada data
-                                                                    if (!empty($value)) {
-                                                                        // Format khusus untuk tanggal
-                                                                        if (in_array($field, ['tanggal_akta', 'tanggal_habis_skmht', 'tanggal_masuk_berkas', 'tanggal_akad', 'tanggal_upload'])) {
-                                                                            // Ubah format tanggal jika datanya valid
-                                                                            $timestamp = strtotime($value); // Konversi ke timestamp
-                                                                            if ($timestamp) {
-                                                                                $value = date('d-m-Y', $timestamp); // Format menjadi d-m-Y
+                                                                        // Tampilkan hanya jika ada data
+                                                                        if (!empty($value)) {
+                                                                            // Format khusus untuk tanggal
+                                                                            if (in_array($field, ['tanggal_akta', 'tanggal_habis_skmht', 'tanggal_masuk_berkas', 'tanggal_akad', 'tanggal_upload'])) {
+                                                                                $timestamp = strtotime($value); // Konversi ke timestamp
+                                                                                if ($timestamp) {
+                                                                                    $value = date('d-m-Y', $timestamp); // Format menjadi d-m-Y
+                                                                                }
                                                                             }
-                                                                        }
 
-                                                                        // Format khusus untuk 'biaya' dan 'jumlah_pinjaman' ke format Rupiah
-                                                                        if ($field === 'biaya' || $field === 'jumlah_pinjaman') {
-                                                                            // Hapus karakter non-angka
-                                                                            $value = preg_replace('/[^0-9]/', '', $value);
+                                                                            // Format khusus untuk 'biaya' dan 'jumlah_pinjaman' ke format Rupiah
+                                                                            if ($field === 'biaya' || $field === 'jumlah_pinjaman') {
+                                                                                // Hapus karakter non-angka
+                                                                                $value = preg_replace('/[^0-9]/', '', $value);
 
-                                                                            // Format angka menjadi format Rupiah
-                                                                            $value = number_format($value, 0, ',', '.');
+                                                                                // Format angka menjadi format Rupiah
+                                                                                $value = number_format($value, 0, ',', '.');
 
-                                                                            // Tambahkan prefix "Rp."
-                                                                            $value = 'Rp. ' . $value;
-                                                                        }
+                                                                                // Tambahkan prefix "Rp."
+                                                                                $value = 'Rp. ' . $value;
+                                                                            }
                                                                 ?>
-                                                                        <li class="list-group-item">
-                                                                            <div class="fw-bold"><?php echo ucwords(str_replace('_', ' ', $field)); ?></div>
-                                                                            <div><?php echo esc_html($value); ?></div>
-                                                                        </li>
+                                                                            <li class="list-group-item">
+                                                                                <div class="fw-bold"><?php echo ucwords(str_replace('_', ' ', $field)) . ' ' . $loop; ?></div>
+                                                                                <div><?php echo esc_html($value); ?></div>
+                                                                            </li>
                                                                 <?php
+                                                                        }
                                                                     }
                                                                 }
                                                                 ?>
-
 
                                                                 <?php if (current_user_can('administrator') || $jabatan_staff == 'keuangan'): ?>
                                                                     <li class="list-group-item">
